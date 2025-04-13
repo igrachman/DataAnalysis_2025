@@ -1,0 +1,22 @@
+# Step 1: Install necessary packages (only need to run once)
+install.packages("BaylorEdPsych")  # For Little's MCAR test
+install.packages("mice")  # For missing data visualization
+
+# Step 2: Load the libraries
+library(BaylorEdPsych)
+library(mice)
+
+# Step 3: Load your dataset into R
+# Assuming the dataset file is in CSV format and named "DataSet_No_Details.csv"
+# Replace the file path with the location where your dataset is saved
+df <- read.csv("DataSet_No_Details(1).csv")
+
+# Step 4: Perform Little's MCAR test
+mcar_test <- LittleMCAR(df)
+
+# Step 5: View the results of the MCAR test
+print(mcar_test)
+
+# Step 6: Interpretation of results
+# If p-value > 0.05, data is MCAR (Missing Completely at Random)
+# If p-value <= 0.05, data is not MCAR, and might be MAR (Missing at Random) or MNAR (Missing Not at Random)
